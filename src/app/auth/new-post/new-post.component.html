@@ -1,0 +1,23 @@
+<form>
+  <div class="form-group">
+    <label for="title">Title </label>
+    <input name="title" [(ngModel)]="newPost.title" type="text" class="form-control" id="title" placeholder="My Awesome Title!" required>
+  </div>
+
+  <div class="form-group">
+    <label for="content">Content </label>
+    <textarea name="content" [(ngModel)]="newPost.content" class="form-control" id="content" placeholder="My Awesome Content!" required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="headerImage">Header Image </label>
+    <input name="headerImage" [(ngModel)]="newPost.headerImage" type="text" class="form-control" id="headerImage" placeholder="Insert the URL to the image here!">
+  </div>
+
+  <div *ngIf="errorMsg !== ''" class="alert alert-danger" role="alert">
+    {{errorMsg}}
+  </div>
+
+  <button type="submit" (click)="CreateNewPost()" class="btn btn-outline-primary">Post</button>
+
+</form>

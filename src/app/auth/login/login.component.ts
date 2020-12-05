@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
     this.userSvc.Login(this.userId, this.password).subscribe((returnedToken) => {
       console.log(returnedToken);
       this.authSvc.SetUserLoggedIn(returnedToken);
+      this.userSvc.SetUserLoggedIn(localStorage.getItem('AuthToken'));
+      // localStorage.setItem('userId', this.userId);
       this.errorMsg = '';
     }, (error) => {
       console.log(error);

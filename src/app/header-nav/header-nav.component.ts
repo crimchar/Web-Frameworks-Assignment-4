@@ -14,6 +14,7 @@ export class HeaderNavComponent implements OnInit {
   userLoggedIn = false;
 
   ngOnInit(): void {
+    localStorage.clear();
     this.authGuardSvc.UserStateChanged.subscribe((userState) => {
       this.userLoggedIn = userState;
     });

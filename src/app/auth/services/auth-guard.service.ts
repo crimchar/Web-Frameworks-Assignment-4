@@ -2,6 +2,8 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiToken } from '../models/token.model';
+import { Token } from '../models/token.model';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +39,9 @@ export class AuthGuardService implements CanActivate {
   LogoutUser()
   {
     localStorage.removeItem('AuthToken');
+    // localStorage.removeItem('userId');
     this.UserStateChanged.emit(false);
+    this.router.navigate(['/home']);
   }
 }
 

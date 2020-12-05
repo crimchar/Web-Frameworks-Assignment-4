@@ -1,1 +1,22 @@
-<h1>Welcome Home :)</h1>
+<div *ngIf=NoPosts()>
+  <div class="row">It's kind of empty in here, maybe you should make a post.</div>
+  <div class="row"><button [routerLink]="['/new-post']" class="btn btn-outline-primary">Create Post</button></div>
+</div>
+
+
+<div class="card" *ngFor="let post of posts">
+  <img *ngIf='post.headerImage !== ""'class="img-thumbnail" width= 400px src='{{ post.headerImage }}' alt="post header image">
+  <div class="card-body">
+    <h2 class="card-subtitle">{{ post.title }}</h2>
+    <h3 class="card-subtitle">{{ post.userId }} posted on {{ post.createdDate | date:'MM/dd/yy'}} :</h3>
+    <p class="card-text">{{ post.content }}</p>
+  </div>
+  <div *ngIf='this.currentUser!= null'>
+    <ng-template [ngIf]='this.currentUser.UserData.userId === post.userId'>
+    <button  [routerLink]="['/edit-post', post.postId]" class="btn btn-primary">Edit</button>
+    <button  (click)="DeletePost(post)" class="btn btn-danger">Delete</button>
+    </ng-template>
+  </div>
+    <hr>
+</div>
+

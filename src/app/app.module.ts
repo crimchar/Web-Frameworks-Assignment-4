@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './auth/services/user.service';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
+import { NewPostComponent } from './auth/new-post/new-post.component';
+import { EditPostComponent } from './auth/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HomeComponent } from './home/home.component';
     HeaderNavComponent,
     NewUserComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NewPostComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,
